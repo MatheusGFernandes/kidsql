@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "KidSQLBK",
+    "slug": "KidSQLBK",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
