@@ -32,7 +32,7 @@ const Page6 = ({ navigation }) => {
         <View>
             <Text>Quais são os dados do terceiro registro dessa tabela?</Text>
             <Produtos />
-            <CheckBox module={"introduction"} question={2} options={alternatives} onChange={(alternative) => setAnswer(alternative[0])}/>
+            <CheckBox verify={1} module={"introduction"} question={2} options={alternatives} onChange={(alternative) => setAnswer(alternative[0])}/>
             <ViewEnd>
                 <Navigation 
                     disable={
