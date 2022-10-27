@@ -1,9 +1,8 @@
-import React, { useState, useContext } from 'react';
-import { View, ViewEnd, Text, TextRed, TextBlue, StyleSheet, ViewImage, Image } from '../../styles/main';
+import React, { useState, useContext } from "react";
+import { View, ViewEnd, Text, TextRed, TextBlue, TouchableOpacity } from "../../styles/main";
 import Navigation from "../../components/Navigation";
 import { Context } from "../../context/AppContext";
-
-import { ExampleTwo } from '../../components/Tables/TablesCreate';
+import { Entypo } from "@expo/vector-icons";
 
 const Create4 = ({ navigation }) => {
 
@@ -14,12 +13,22 @@ const Create4 = ({ navigation }) => {
             <Text>Para sinalizarmos que a coluna será uma chave primária, adicionamos o comando <TextRed>“PRIMARY KEY”</TextRed> (Chave primária em inglês) logo após definir o seu tipo de dado, exemplo: <TextRed>“CODIGO INTEGER PRIMARY KEY”</TextRed>.</Text>
             <ViewEnd>
                 <Navigation 
-                    reply  ={() => navigation.navigate('Create3')} 
-                    forward={() => navigation.navigate('Create5')} 
+                    reply  ={() => navigation.navigate("Create3")} 
+                    forward={() => navigation.navigate("Create5")} 
                 />
             </ViewEnd>
         </View>
     )
+};
+
+Create4.navigationOptions = ({ navigation }) => {
+    return {
+        headerLeft: () => (
+          <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+            <Entypo name="home" size={30} />
+          </TouchableOpacity>
+        ),
+      };
 };
 
 export default Create4;

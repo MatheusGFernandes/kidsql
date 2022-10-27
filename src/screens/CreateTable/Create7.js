@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
-import { View, Text, TextGreen, TextPurple, ViewMainButton, MainButton, TextMainButton, Image } from '../../styles/main';
+import React, { useContext } from "react";
+import { View, Text, TextGreen, TextPurple, ViewMainButton, MainButton, TextMainButton, Image } from "../../styles/main";
 import { Context } from "../../context/AppContext";
-import useProgress from '../../hooks/useProgress';
+import useProgress from "../../hooks/useProgress";
 
 const Create7 = ({ navigation }) => {
 
@@ -10,7 +10,7 @@ const Create7 = ({ navigation }) => {
 
     return (
         <View>
-            <TextGreen style={{fontSize: 26, alignSelf: 'center'}}>EXCELENTE!</TextGreen>
+            <TextGreen style={{fontSize: 26, alignSelf: "center"}}>EXCELENTE!</TextGreen>
             <Text>Agora vamos ver quais são os produtos necessários para a casa.</Text>
             <Text><TextPurple>Nala</TextPurple> irá perguntar a sua mãe <TextPurple>Fátima</TextPurple>:</Text>
             <Image source={require("../../assets/NalaEFátima.png")} style={{width: 415, height: 380}}/>
@@ -18,7 +18,7 @@ const Create7 = ({ navigation }) => {
                 <MainButton 
                     onPress={() => {
                         saveProgress("insertModule");
-                        navigation.navigate('Page1');
+                        navigation.navigate("Home");
                     }}>
                     <TextMainButton>Continuar</TextMainButton>
                 </MainButton>

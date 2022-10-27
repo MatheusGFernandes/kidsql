@@ -1,63 +1,43 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { ViewEnd, ScrollView, ViewTable, Text, TextRed } from '../../styles/main';
+import React, { useState, useContext } from "react";
+import { View, ViewEnd, Text, TextRed, TouchableOpacity } from "../../styles/main";
 import Navigation from "../../components/Navigation";
-import { Produtos, ExampleThree } from '../../components/Tables/TablesIntroduction';
-import CheckBox from '../../components/CheckBox';
+import { Produtos, ExampleThree } from "../../components/Tables/TablesIntroduction";
+import CheckBox from "../../components/CheckBox";
 import { Context } from "../../context/AppContext";
+import { Entypo } from "@expo/vector-icons";
 
-import uuid from 'react-native-uuid';
-import { useAsyncStorage } from '@react-native-async-storage/async-storage';
+import uuid from "react-native-uuid";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Page5 = ({ navigation }) => {
-    
+
     const { font } = useContext(Context);
 
-    const { getItem, setItem } = useAsyncStorage("@Questions:KIDSQL");
-    const [answer, setAnswer]  = useState();
-    const [verify, setVerify]  = useState(0);
+    const [answer, setAnswer] = useState();
 
-    const fetchAnswer = async () => {
-
-        const response = await getItem();
-        const previousAnswer = response ? JSON.parse(response) : [];
-        const teste = previousAnswer[0];
-        const teste2 = teste?.alternative ?? 0;
-        
-        if (response != null) {
-                
-            setVerify(teste2);
-        }
-        
-        return verify;
-    }
-
-    // useEffect(() => {
-    //     navigation.addListener('didFocus', () => { // Todas vez que essa tela estiver em foco (ou seja, for chamada) recarrega os dados existentes
-    //         fetchAnswer();
-    //     });
-
-    // }, []);
+    // const previousAnswer = AsyncStorage.getItem("@Questions:KIDSQL");
+    // console.log(previousAnswer[1] );
 
     const alternatives = [
-        {text: "Produto, Quantidade, Validade, Preco", id: 1},
-        {text: "Banana, 10, KG, 5", id: 2},
-        {text: "Produto, Quantidade, Unidade, Preco",  id: 3},
-        {text: "Arroz, 15, KG, 5",  id: 4},
-    ];
+        { text: "Bolacha, 20, UN, 3", id: 1},
+        { text: "Leite, 12, L, 6", id: 2},
+        { text: "Leite, 6, L, 12",  id: 3},
+        { text: "Refrigerante, 10, L, 7",  id: 4},
+    ]
 
     return (
-        <ScrollView>
-            <Text>Vamos ver se você entendeu, aqui temos a tabela <TextRed>PRODUTOS</TextRed>, que representa os produtos que vendem em um determinado local. Quais são as colunas dessa tabela?</Text>
-            <Text>{verify}</Text>
-            <ViewTable>
+        <View>
+            <Text>Quais são os dados do terceiro registro dessa tabela?</Text>
             <Produtos />
-            </ViewTable>
-            <CheckBox verify={0} options={alternatives} onChange={(alternative) => setAnswer(alternative[0])}/>
+            <CheckBox verify={1} module={"introduction"} question={2} options={alternatives} onChange={(alternative) => setAnswer(alternative[0])}/>
             <ViewEnd>
                 <Navigation 
-                    reply  ={() => navigation.navigate('Page4')} 
+                    disable={
+                        answer ? false : true
+                    }
+                    reply  ={() => navigation.navigate("Page4")} 
                     forward={
-                        answer === 3  ? 
+                        answer === 2 ? 
                             async () => {
                                 const id = uuid.v4();
 
@@ -65,30 +45,38 @@ const Page5 = ({ navigation }) => {
 
                                     id,
                                     module: "Introduction",
-                                    question: 1,
+                                    question: 2,
                                     alternative: answer
                                 };
-                                
-                                const response = await getItem();
+                            
+                                const response = await AsyncStorage.getItem("@Questions:KIDSQL");
                                 const previousData = response ? JSON.parse(response) : [];
                                 const data = [...previousData, newRegister];
 
-                                previousData.some((register) => register.module === "Introduction" && register.question === 1) ? 
-
-                                    null :
-                                    await setItem(JSON.stringify(data)) 
-                                    
+                                previousData.some((register) => register.module === "Introduction" && register.question === 2) ? 
+                                
+                                    null : 
+                                    await AsyncStorage.setItem("@Questions:KIDSQL", JSON.stringify(data))
                                 ;
 
-                                console.log(previousData.filter((register) => register.module === "Introduction" && register.question === 1));
-                                navigation.navigate('Page6')
-                                    
+                                navigation.navigate("Page6")
+
                             }  : () => null} 
                 />
             </ViewEnd>
             
-        </ScrollView>
+        </View>
     )
+};
+
+Page5.navigationOptions = ({ navigation }) => {
+    return {
+        headerLeft: () => (
+          <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+            <Entypo name="home" size={30} />
+          </TouchableOpacity>
+        ),
+      };
 };
 
 export default Page5;

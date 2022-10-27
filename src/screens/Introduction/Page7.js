@@ -1,46 +1,36 @@
-import React, { useEffect, useContext } from 'react';
-import { Text, TextRed, View, ViewEnd, ViewImage, Image } from '../../styles/main';
+import React, { useContext } from "react";
+import { Text, TextRed, TextBlue, ScrollView, ViewEnd, ViewImage, Image, TouchableOpacity } from "../../styles/main";
 import Navigation from "../../components/Navigation";
 import { Context } from "../../context/AppContext";
-
-import { Poppins_500Medium } from '@expo-google-fonts/poppins';
-import { useFonts } from 'expo-font';
-import { Loading } from '../../components/Loading';
-
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Entypo } from "@expo/vector-icons";
 
 const Page7 = ({ navigation }) => {
 
     const { font } = useContext(Context);
 
-    useEffect(() => {
-        navigation.addListener('didFocus', () => { // Todas vez que essa tela estiver em foco (ou seja, for chamada) recarrega os blogs existentes
-            fetchQuestions();
-        });
-
-    }, []);
-
-    async function fetchQuestions () {
-        const response = await AsyncStorage.getItem("@Questions:KIDSQL");
-        const data = response ? JSON.parse(response) : [];
-        console.log(data);
-
-    }
-
     return (
-        <View>
-            <Text>Porém há um elemento essencial para que seja possível fazer consultas e diferenciar os dados em um banco de dados, esse elemento se chama <TextRed>"Chave Primária"</TextRed>.</Text>
-            <Text>A <TextRed>"Chave Primária"</TextRed> é um identificador único para cada linha de uma determinada tabela, pois é possível por exemplo naquela tabela "Notas das Provas" do professor, que exista 2 alunos com o mesmo nome, então como o professor saberia diferenciar qual aluno tirou sua respectiva nota? Utilizando a <TextRed>"Chave Primária"</TextRed>.
-            </Text>
-            <Image source={require("../../assets/PessoaConfusa.png")} />
+        <ScrollView>
+            <Text>Nesse caso a <TextRed>"Chave Primária"</TextRed> seria uma coluna a mais que adicionaríamos na nossa tabela, e essa coluna se chamaria "CÓDIGO". Essa coluna "CÓDIGO" seria um número que identificaria cada aluno, sendo um número que NUNCA se repete, ou seja, NUNCA existiria 2 ou mais alunos com códigos iguais.</Text>
+            <Text>Voltando ao exemplo da tabela de notas, caso existissem dois alunos com o mesmo nome, por exemplo "Matheus Fernandes", o professor saberia diferenciar esses 2 alunos pois cada um teria o seu código único, existindo assim um "Matheus Fernandes" com o código <TextBlue>"07"</TextBlue> e outro "Matheus Fernandes" com o código <TextBlue>"09"</TextBlue>, por exemplo.</Text>
+            <Image source={require("../../assets/Meninos.png")} />
             <ViewEnd>
                 <Navigation 
-                    reply  ={() => navigation.navigate('Page6')} 
-                    forward={() => navigation.navigate('Page8')} 
+                    reply  ={() => navigation.navigate("Page6")} 
+                    forward={() => navigation.navigate("Page8")} 
                 />
             </ViewEnd>
-        </View>
+        </ScrollView>
     )
+};
+
+Page7.navigationOptions = ({ navigation }) => {
+    return {
+        headerLeft: () => (
+          <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+            <Entypo name="home" size={30} />
+          </TouchableOpacity>
+        ),
+      };
 };
 
 export default Page7;

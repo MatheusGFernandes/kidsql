@@ -1,29 +1,78 @@
-import React, { useContext } from 'react';
-import { Text, TextRed, TextBlue, ScrollView, ViewEnd, ViewImage, Image } from '../../styles/main';
+import React, { useState, useEffect, useContext } from "react";
+import { ViewEnd, Text, TextRed, ScrollView, TouchableOpacity } from "../../styles/main";
 import Navigation from "../../components/Navigation";
+import { ProdutosPK } from "../../components/Tables/TablesIntroduction";
+import CheckBox from "../../components/CheckBox";
 import { Context } from "../../context/AppContext";
+import { Entypo } from "@expo/vector-icons";
 
-import { Poppins_500Medium } from '@expo-google-fonts/poppins';
-import { useFonts } from 'expo-font';
-import { Loading } from '../../components/Loading';
+import uuid from "react-native-uuid";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const Page7 = ({ navigation }) => {
+const Page8 = ({ navigation }) => {
 
     const { font } = useContext(Context);
 
+    const [answer, setAnswer] = useState();
+
+    const alternatives = [
+        { text: "Leite",         id: 1},
+        { text: "Banana",        id: 2},
+        { text: "Arroz",         id: 3},
+        { text: "Refrigerante",  id: 4},
+    ]
+
     return (
         <ScrollView>
-            <Text>Nesse caso a <TextRed>"Chave Primária"</TextRed> seria uma coluna a mais que adicionaríamos na nossa tabela, e essa coluna se chamaria "CÓDIGO". Essa coluna "CÓDIGO" seria um número que identificaria cada aluno, sendo um número que NUNCA se repete, ou seja, NUNCA existiria 2 ou mais alunos com códigos iguais.</Text>
-            <Text>Voltando ao exemplo da tabela de notas, caso existissem dois alunos com o mesmo nome, por exemplo "Matheus Fernandes", o professor saberia diferenciar esses 2 alunos pois cada um teria o seu código único, existindo assim um "Matheus Fernandes" com o código <TextBlue>"07"</TextBlue> e outro "Matheus Fernandes" com o código <TextBlue>"09"</TextBlue>, por exemplo.</Text>
-            <Image source={require("../../assets/Meninos.png")} />
+            <Text>A <TextRed>"Chave Primária"</TextRed> de uma tabela nos ajuda a executar consultas mais precisas, para sabermos exatamente qual dado estamos resgatando, para que não haja redundância e duplicidade dos dados, o que tornaria nossa tabela muito confusa e desorganizada.
+            </Text>
+            <Text>Vamos praticar! Abaixo temos uma tabela, sendo sua chave primária representada por um <TextRed>"*"</TextRed> asterisco, qual é o nome do produto com a chave primária "5"?
+            </Text>
+            <ProdutosPK />
+            <CheckBox verify={2} module={"introduction"} question={3} options={alternatives} onChange={(alternative) => setAnswer(alternative[0])}/>
             <ViewEnd>
                 <Navigation 
-                    reply  ={() => navigation.navigate('Page7')} 
-                    forward={() => navigation.navigate('Page9')} 
+                    reply  ={() => navigation.navigate("Page7")} 
+                    forward={
+                        answer === 1 ? 
+                            async () => {
+                                const id = uuid.v4();
+
+                                const newRegister = {
+
+                                    id,
+                                    module: "Introduction",
+                                    question: 3,
+                                    alternative: answer
+                                };
+                            
+                                const response = await AsyncStorage.getItem("@Questions:KIDSQL");
+                                const previousData = response ? JSON.parse(response) : [];
+                                const data = [...previousData, newRegister];
+
+                                previousData.some((register) => register.module === "Introduction" && register.question === 3) ? 
+                                
+                                    null : 
+                                    await AsyncStorage.setItem("@Questions:KIDSQL", JSON.stringify(data))
+                                ;
+
+                                navigation.navigate("Page9")
+
+                            } : () => null} 
                 />
             </ViewEnd>
         </ScrollView>
     )
 };
 
-export default Page7;
+Page8.navigationOptions = ({ navigation }) => {
+    return {
+        headerLeft: () => (
+          <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+            <Entypo name="home" size={30} />
+          </TouchableOpacity>
+        ),
+      };
+};
+
+export default Page8;

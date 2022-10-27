@@ -1,9 +1,10 @@
-import React, { useState, useContext } from 'react';
-import { View, ViewEnd, Text, TextRed, TextBlue, StyleSheet, ViewImage, Image } from '../../styles/main';
+import React, { useState, useContext } from "react";
+import { View, ViewEnd, Text, TextRed, TextBlue, TouchableOpacity } from "../../styles/main";
 import Navigation from "../../components/Navigation";
 import { Context } from "../../context/AppContext";
+import { Entypo } from "@expo/vector-icons";
 
-import { ExampleTwo } from '../../components/Tables/TablesCreate';
+import { ExampleTwo } from "../../components/Tables/TablesCreate";
 
 const Create3 = ({ navigation }) => {
 
@@ -15,12 +16,22 @@ const Create3 = ({ navigation }) => {
             </View>
             <ViewEnd>
                 <Navigation 
-                    reply  ={() => navigation.navigate('Create2')} 
-                    forward={() => navigation.navigate('Create4')} 
+                    reply  ={() => navigation.navigate("Create2")} 
+                    forward={() => navigation.navigate("Create4")} 
                 />
             </ViewEnd>
         </View>
     )
+};
+
+Create3.navigationOptions = ({ navigation }) => {
+    return {
+        headerLeft: () => (
+          <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+            <Entypo name="home" size={30} />
+          </TouchableOpacity>
+        ),
+      };
 };
 
 export default Create3;

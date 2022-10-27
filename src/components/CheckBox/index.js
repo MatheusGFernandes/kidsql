@@ -17,7 +17,7 @@ const CheckBox = ({ verify, options, onChange }) => {
         const previousAnswer = response ? JSON.parse(response) : [];
         const teste = previousAnswer[verify];
         const teste2 = teste?.alternative ?? 0;
-        
+        console.log(teste2);
         if (response != null) {
                 
             setAnswer(teste2);

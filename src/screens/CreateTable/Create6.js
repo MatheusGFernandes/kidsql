@@ -1,14 +1,13 @@
-import React, { useState, useContext } from 'react';
-import { View, ViewEnd, Text, TextPurple, TextGreen, ViewImage, Image } from '../../styles/main';
+import React, { useState, useContext } from "react";
+import { View, ViewEnd, Text, TextPurple, TextGreen, TouchableOpacity } from "../../styles/main";
 import Navigation from "../../components/Navigation";
 import { Context } from "../../context/AppContext";
+import { Entypo } from "@expo/vector-icons";
 
-import CheckBox from '../../components/CheckBox';
+import CheckBox from "../../components/CheckBox";
 
-import { ProdutosColuna } from '../../components/Tables/TablesCreate';
-
-import uuid from 'react-native-uuid';
-import { useAsyncStorage } from '@react-native-async-storage/async-storage';
+import uuid from "react-native-uuid";
+import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 
 const Create6 = ({ navigation }) => {
 
@@ -29,7 +28,7 @@ const Create6 = ({ navigation }) => {
             <CheckBox verify={4} options={alternatives} onChange={(alternative) => setAnswer(alternative[0])}/>
             <ViewEnd>
                 <Navigation 
-                    reply  ={() => navigation.navigate('Create5')} 
+                    reply  ={() => navigation.navigate("Create5")} 
                     forward={
                         answer === 3  ? 
                             async () => {
@@ -54,13 +53,23 @@ const Create6 = ({ navigation }) => {
                                     
                                 ;
 
-                                navigation.navigate('Create7')
+                                navigation.navigate("Create7")
                                     
                             }  : () => null} 
                 />
             </ViewEnd>
         </View>
     )
+};
+
+Create6.navigationOptions = ({ navigation }) => {
+    return {
+        headerLeft: () => (
+          <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+            <Entypo name="home" size={30} />
+          </TouchableOpacity>
+        ),
+      };
 };
 
 export default Create6;

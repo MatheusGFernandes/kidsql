@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react';
-import { Text, View, ViewEnd, ViewImage, Image } from '../../styles/main';
+import React, { useState, useContext } from "react";
+import { Text, View, ViewEnd, ViewImage, Image, TouchableOpacity } from "../../styles/main";
 import Navigation from "../../components/Navigation";
 import { Context } from "../../context/AppContext";
-
+import { Entypo } from "@expo/vector-icons";
 
 const Page2 = ({ navigation }) => {
 
@@ -10,18 +10,26 @@ const Page2 = ({ navigation }) => {
 
     return (
         <View>
-            <Text>O que é um banco de dados?</Text>
-            <Text>Banco de dados é um local, localizado por exemplo em um arquivo de computador, que armazena informações sobre um determinado lugar, objeto, conta, entre outros.</Text>
-            <Text>Temos por exemplo o professor de sua escola, ele precisa guardar as notas da sua prova em algum lugar, para que no futuro ele consiga fazer a sua média e saber se você passou de ano ou não, correto?</Text>
-            <Image source={require("../../assets/ProfessorNoComputador.png")}/>
+            <Text>E é justamente em um banco de dados que esse professor irá guardar as notas das provas de cada aluno, para que no futuro ele possa consultar essas notas e conseguir calcular sua média, ou até mesmo caso os pais de um aluno queiram saber qual nota seu filho tirou em uma determinada prova.</Text>
+            <Image source={require("../../assets/Prova.png")} />
             <ViewEnd>
                 <Navigation 
-                    reply  ={() => navigation.navigate('Page1')} 
-                    forward={() => navigation.navigate('Page3')} 
+                    reply  ={() => navigation.navigate("Page1")} 
+                    forward={() => navigation.navigate("Page3")} 
                 />
             </ViewEnd>
         </View>
     )
+};
+
+Page2.navigationOptions = ({ navigation }) => {
+    return {
+        headerLeft: () => (
+          <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+            <Entypo name="home" size={30} />
+          </TouchableOpacity>
+        ),
+      };
 };
 
 export default Page2;

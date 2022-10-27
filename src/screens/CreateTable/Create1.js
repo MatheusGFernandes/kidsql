@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-import { Text, TextBlue, TextPurple, ViewEnd, ViewImage, ScrollView, Image } from '../../styles/main';
+import React, { useState, useContext } from "react";
+import { Text, TextBlue, TextPurple, ViewEnd, ScrollView, Image } from "../../styles/main";
 import Navigation from "../../components/Navigation";
 import { Context } from "../../context/AppContext";
 
@@ -15,8 +15,8 @@ const Create1 = ({ navigation }) => {
             <Text>Para isso, vamos ajudar <TextPurple>Nala</TextPurple> criando uma tabela chamada <TextBlue>“COMPRAS”</TextBlue>, para que ela guarde quais produtos serão necessários para a despesa de casa.</Text>
             <ViewEnd>
                 <Navigation 
-                    reply  ={() => navigation.navigate('Page1')} 
-                    forward={() => navigation.navigate('Create2')} 
+                    reply  ={() => navigation.navigate("Home")} 
+                    forward={() => navigation.navigate("Create2")} 
                 />
             </ViewEnd>
         </ScrollView>

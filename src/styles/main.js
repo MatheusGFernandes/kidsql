@@ -33,6 +33,13 @@ export const Modulo = styled.TouchableOpacity.attrs({
     margin: 15px 10px 0px;
 `;
 
+export const TouchableOpacity = styled.TouchableOpacity.attrs({
+    activeOpacity: 0.7
+})`
+
+    padding: 15px;
+`;
+
 export const TextModulo = styled.Text`
 
     font-size: 16px;

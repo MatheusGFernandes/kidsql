@@ -1,47 +1,43 @@
 import React, { useState, useContext } from "react";
-import { View, ViewEnd, ScrollView, Text, TextRed, TextBlue, TouchableOpacity } from "../../styles/main";
+import { View, ViewEnd, ScrollView, Text, TextBlue, TextGreen, TouchableOpacity } from "../../styles/main";
 import Navigation from "../../components/Navigation";
 import { Context } from "../../context/AppContext";
 import { Entypo } from "@expo/vector-icons";
 
 import CheckBox from "../../components/CheckBox";
 
-import { ProdutosColuna } from "../../components/Tables/TablesCreate";
-
 import uuid from "react-native-uuid";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 
-const Create5 = ({ navigation }) => {
+const Insert4 = ({ navigation }) => {
 
     const { getItem, setItem } = useAsyncStorage("@Questions:KIDSQL");
     const [answer, setAnswer]  = useState();
-    const [verify, setVerify]  = useState(0);
 
     const alternatives = [
-        { text: "CODIGO INTEGER PRIMARY KEY, PRODUTO TEXT, PRECO INTEGER, UNIDADE TEXT", id: 1},
-        { text: "PRODUTO TEXT, CODIGO INTEGER, UNIDADE TEXT, PRECO INTEGER", id: 2},
-        { text: "CODIGO INTEGER PRIMARY KEY, PRODUTO TEXT, UNIDADE TEXT, PRECO INTEGER",  id: 3},
-        { text: "CODIGO TEXT PRIMARY KEY, PRODUTO TEXT, UNIDADE TEXT, PRECO INTEGER",  id: 4},
+        { text: "INSERT INTO (CODIGO, PRODUTO, QUANTIDADE, PRECO, UNIDADE) VALUES (3, “Chocolate”, 2, 7, “UN”);",         id: 1},
+        { text: "INSERT INTO COMPRAS (CODIGO, PRODUTO, QUANTIDADE, PRECO, UNIDADE) VALUES (2, “Chocolate”, 3, 7, “UN”);", id: 2},
+        { text: "INSERT INTO COMPRAS (CODIGO, PRODUTO, QUANTIDADE, PRECO, UNIDADE) VALUES (3, “Chocolate”, 2, 7, “KG”);", id: 3},
+        { text: "INSERT INTO COMPRAS (CODIGO, PRODUTO, QUANTIDADE, PRECO, UNIDADE) VALUES (3, “Chocolate”, 2, 7, “UN”);", id: 4},
     ];
 
     return (
         <View>
-            <Text>Agora é sua vez, quais são as colunas e os seus tipos em ordem (da esquerda para a direita)?</Text>
-            <ProdutosColuna />
-            <CheckBox verify={3} options={alternatives} onChange={(alternative) => setAnswer(alternative[0])}/>
+            <Text><TextGreen>Muito bem!</TextGreen> E agora para adicionarmos o produto <TextBlue>“Chocolate”</TextBlue>, com o <TextBlue>código 3</TextBlue>, preço de <TextBlue>7 reais</TextBlue> sendo sua quantidade em <TextBlue>2 unidades (“UN”)</TextBlue>?</Text>
+            <CheckBox verify={6} options={alternatives} onChange={(alternative) => setAnswer(alternative[0])}/>
             <ViewEnd>
                 <Navigation 
-                    reply  ={() => navigation.navigate("Create4")} 
+                    reply  ={() => navigation.navigate("Insert3")} 
                     forward={
-                        answer === 1  ? 
+                        answer === 4  ? 
                             async () => {
                                 const id = uuid.v4();
 
                                 const newRegister = {
 
                                     id,
-                                    module: "Create",
-                                    question: 1,
+                                    module: "Insert",
+                                    question: 2,
                                     alternative: answer
                                 };
                                 
@@ -49,14 +45,14 @@ const Create5 = ({ navigation }) => {
                                 const previousData = response ? JSON.parse(response) : [];
                                 const data = [...previousData, newRegister];
 
-                                previousData.some((register) => register.module === "Create" && register.question === 1) ? 
+                                previousData.some((register) => register.module === "Insert" && register.question === 2) ? 
 
                                     null :
                                     await setItem(JSON.stringify(data)) 
                                     
                                 ;
 
-                                navigation.navigate("Create6")
+                                navigation.navigate("Insert5")
                                     
                             }  : () => null} 
                 />
@@ -65,7 +61,7 @@ const Create5 = ({ navigation }) => {
     )
 };
 
-Create5.navigationOptions = ({ navigation }) => {
+Insert4.navigationOptions = ({ navigation }) => {
     return {
         headerLeft: () => (
           <TouchableOpacity onPress={() => navigation.navigate("Home")}>
@@ -75,4 +71,5 @@ Create5.navigationOptions = ({ navigation }) => {
       };
 };
 
-export default Create5;
+
+export default Insert4;
