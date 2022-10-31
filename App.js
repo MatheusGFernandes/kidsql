@@ -24,6 +24,10 @@ import Insert2 from "./src/screens/Insert/Insert2";
 import Insert3 from "./src/screens/Insert/Insert3";
 import Insert4 from "./src/screens/Insert/Insert4";
 import Insert5 from "./src/screens/Insert/Insert5";
+import Select1 from "./src/screens/Select/Select1";
+import Select2 from "./src/screens/Select/Select2";
+import Select3 from "./src/screens/Select/Select3";
+import Select4 from "./src/screens/Select/Select4";
 
 const navigator = createStackNavigator(
   {
@@ -50,6 +54,10 @@ const navigator = createStackNavigator(
     Insert3,
     Insert4,
     Insert5,
+    Select1,
+    Select2,
+    Select3,
+    Select4,
   },
   {
     initialRouteName: "Welcome", //initialRouteName Mostra esse elemento primeiro
