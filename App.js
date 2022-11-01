@@ -28,6 +28,9 @@ import Select1 from "./src/screens/Select/Select1";
 import Select2 from "./src/screens/Select/Select2";
 import Select3 from "./src/screens/Select/Select3";
 import Select4 from "./src/screens/Select/Select4";
+import Select5 from "./src/screens/Select/Select5";
+import Select6 from "./src/screens/Select/Select6";
+import Select7 from "./src/screens/Select/Select7";
 
 const navigator = createStackNavigator(
   {
@@ -58,6 +61,9 @@ const navigator = createStackNavigator(
     Select2,
     Select3,
     Select4,
+    Select5,
+    Select6,
+    Select7,
   },
   {
     initialRouteName: "Welcome", //initialRouteName Mostra esse elemento primeiro

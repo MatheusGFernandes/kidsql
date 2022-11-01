@@ -16,7 +16,7 @@ const Select1 = ({ navigation }) => {
             <Text>Para descobrirmos todos os dados que existem nessa tabela, executaremos o comando "<TextRed>SELECT * FROM COMPRAS;</TextRed>"</Text>
             <ViewEnd>
                 <Navigation 
-                    reply  ={() => navigation.navigate("HomeScreen")} 
+                    reply  ={() => navigation.navigate("Home")} 
                     forward={() => navigation.navigate("Select2")} 
                 />
             </ViewEnd>

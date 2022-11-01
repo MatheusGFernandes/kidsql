@@ -32,12 +32,12 @@ export class Compras2 extends Component {
       this.state = {
         tableHead: ["PRODUTO", "PREÇO"],
         tableData: [
-          ["Leite",     6],
-          ["Suco",      8],
-          ["Chocolate", 7],
-          ["Banana",    5],
-          ["Arroz",     5],
-          ["Ovo",       1],
+        ["Leite",     6],
+        ["Suco",      8],
+        ["Chocolate", 7],
+        ["Banana",    5],
+        ["Arroz",     5],
+        ["Ovo",       1],
         ],
         widthArr: [100, 100],
       }
@@ -50,3 +50,46 @@ export class Compras2 extends Component {
       );
     };
   };
+
+export class Compras3 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tableHead: ["PRODUTO", "PREÇO"],
+      tableData: [
+        ["Leite",     6],
+        ["Suco",      8],
+        ["Chocolate", 7]
+      ],
+      widthArr: [100, 100],
+    }
+  }
+
+  render() {
+    const state = this.state;
+    return (
+      <Tables data={{ tableData: state.tableData, tableHead: state.tableHead, tableWidth: state.widthArr, headHeight: 40 }} />
+    );
+  };
+};
+
+export class Compras4 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tableHead: ["PRODUTO", "PREÇO", "QUANTIDADE"],
+      tableData: [
+        ["Arroz",     5,  5],
+        ["Ovo",       1, 10]
+      ],
+      widthArr: [100, 100, 110],
+    }
+  }
+
+  render() {
+    const state = this.state;
+    return (
+      <Tables data={{ tableData: state.tableData, tableHead: state.tableHead, tableWidth: state.widthArr, headHeight: 40 }} />
+    );
+  };
+};
