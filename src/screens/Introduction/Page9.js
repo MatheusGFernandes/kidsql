@@ -5,7 +5,7 @@ import useProgress from "../../hooks/useProgress";
 
 const Page9 = ({ navigation }) => {
 
-    const { font, progress, setProgress } = useContext(Context);
+    const { progress, setProgress } = useContext(Context);
     const { saveProgress } = useProgress(progress, setProgress)
 
     return (

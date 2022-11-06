@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { View, Modulo, TextModulo } from '../styles/main';
-import { useFocusEffect } from '@react-navigation/native';
 import { Context } from "../context/AppContext";
 import useProgress from '../hooks/useProgress';
 
@@ -44,7 +43,8 @@ const HomeScreen = ({ navigation }) => {
 
     async function fetchQuestions () {
         const response = await AsyncStorage.getItem("@Questions:KIDSQL");
-        // const response2 = await AsyncStorage.removeItem("@Module:KIDSQL");
+        // const response2 = await AsyncStorage.removeItem("@Questions:KIDSQL");
+        // const response3 = await AsyncStorage.removeItem("@Module:KIDSQL");
         // const data = response ? JSON.parse(response) : [];
         // console.log(data);
 

@@ -1,7 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { View, ViewEnd, Text, TextPurple, TextGreen, TouchableOpacity } from "../../styles/main";
 import Navigation from "../../components/Navigation";
-import { Context } from "../../context/AppContext";
 import { Entypo } from "@expo/vector-icons";
 
 import CheckBox from "../../components/CheckBox";
@@ -13,7 +12,6 @@ const Create6 = ({ navigation }) => {
 
     const { getItem, setItem } = useAsyncStorage("@Questions:KIDSQL");
     const [answer, setAnswer]  = useState();
-    const [verify, setVerify]  = useState(0);
 
     const alternatives = [
         { text: "CREATE TABLE COMPRAS (CODIGO INTEGER PRIMARY KEY, PRODUTO INTEGER, QUANTIDADE TEXT, PRECO TEXT, IDADE INTEGER)", id: 1},
@@ -28,6 +26,7 @@ const Create6 = ({ navigation }) => {
             <CheckBox verify={4} options={alternatives} onChange={(alternative) => setAnswer(alternative[0])}/>
             <ViewEnd>
                 <Navigation 
+                    disabled={answer === undefined ? true : false}
                     reply  ={() => navigation.navigate("Create5")} 
                     forward={
                         answer === 3  ? 

@@ -1,7 +1,6 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import { View, ViewEnd, Text, TextRed, TextBlue, TouchableOpacity } from "../../styles/main";
 import Navigation from "../../components/Navigation";
-import { Context } from "../../context/AppContext";
 import { Entypo } from "@expo/vector-icons";
 
 import { Compras2 } from "../../components/Tables/TablesSelect";

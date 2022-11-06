@@ -7,7 +7,7 @@ import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 
 const CheckBox = ({ verify, options, onChange }) => {
     
-    const { getItem, setItem } = useAsyncStorage("@Questions:KIDSQL");
+    const { getItem, setItem }  = useAsyncStorage("@Questions:KIDSQL");
     const [selected, setSelect] = useState([]);
     const [answer, setAnswer]   = useState(0);
 
@@ -15,12 +15,12 @@ const CheckBox = ({ verify, options, onChange }) => {
 
         const response = await getItem();
         const previousAnswer = response ? JSON.parse(response) : [];
-        const teste = previousAnswer[verify];
-        const teste2 = teste?.alternative ?? 0;
-        console.log(teste2);
+        const catchAnswer = previousAnswer[verify];
+        const catchResponse = catchAnswer?.alternative ?? 0;
+ 
         if (response != null) {
                 
-            setAnswer(teste2);
+            setAnswer(catchResponse);
         }
         
         return answer;
@@ -63,7 +63,7 @@ const CheckBox = ({ verify, options, onChange }) => {
                             { selected.findIndex(i => i === alternative.id) !== -1 ? 
                                 <Ionicons name="checkbox" size={22} color='#5b1d99'/> :
                                 <MaterialCommunityIcons name="checkbox-blank-outline" size={22} color='#5b1d99'/>}
-                        </TouchableOpacity> {alternative.text} {answer}</Text>
+                        </TouchableOpacity> {alternative.text}</Text>
                 </ViewOptions>
             ))}
         </View>

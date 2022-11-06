@@ -1,17 +1,14 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import { ViewEnd, Text, TextRed, ScrollView, TouchableOpacity } from "../../styles/main";
 import Navigation from "../../components/Navigation";
 import { ProdutosPK } from "../../components/Tables/TablesIntroduction";
 import CheckBox from "../../components/CheckBox";
-import { Context } from "../../context/AppContext";
 import { Entypo } from "@expo/vector-icons";
 
 import uuid from "react-native-uuid";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Page8 = ({ navigation }) => {
-
-    const { font } = useContext(Context);
 
     const [answer, setAnswer] = useState();
 
@@ -32,9 +29,10 @@ const Page8 = ({ navigation }) => {
             <CheckBox verify={2} module={"introduction"} question={3} options={alternatives} onChange={(alternative) => setAnswer(alternative[0])}/>
             <ViewEnd>
                 <Navigation 
+                    disabled={answer === undefined ? true : false}
                     reply  ={() => navigation.navigate("Page7")} 
                     forward={
-                        answer === 1 ? 
+                        answer === 4 ? 
                             async () => {
                                 const id = uuid.v4();
 

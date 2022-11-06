@@ -1,8 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { View, ViewEnd, Text, TextRed, TouchableOpacity } from "../../styles/main";
 import Navigation from "../../components/Navigation";
-import { Context } from "../../context/AppContext";
-import { Entypo } from "@expo/vector-icons";
+import { Entypo, AntDesign } from "@expo/vector-icons";
 
 import CheckBox from "../../components/CheckBox";
 
@@ -14,6 +13,8 @@ const Select5 = ({ navigation }) => {
     const { getItem, setItem } = useAsyncStorage("@Questions:KIDSQL");
     const [answer, setAnswer]  = useState();
 
+    const maior = ">";
+
     const alternatives = [
         { text: "Ovo, Suco, 10, 8",      id: 1},
         { text: "Chocolate, Ovo, 7, 10", id: 2},
@@ -23,10 +24,12 @@ const Select5 = ({ navigation }) => {
 
     return (
         <View>
-            <Text>Vamos praticar, executando esse comando <TextRed>"SELECT PRODUTO, PRECO FROM COMPRAS WHERE PRECO `{'>'}` 7"</TextRed>, quais informações o banco nos retornaria?</Text>
+            <Text>Vamos praticar, executando esse comando <TextRed>"SELECT PRODUTO, PRECO FROM COMPRAS WHERE PRECO {maior} 7"</TextRed>, quais informações o banco nos retornaria?</Text>
+            <Text style={{ fontSize: 12 }}>(Clique no ícone da tabela no canto superior direito para visualizar a tabela "Compras")</Text>
             <CheckBox verify={7} options={alternatives} onChange={(alternative) => setAnswer(alternative[0])}/>
             <ViewEnd>
                 <Navigation 
+                    disabled={answer === undefined ? true : false}
                     reply  ={() => navigation.navigate("Select3")} 
                     forward={
                         answer === 3  ? 
@@ -68,6 +71,11 @@ Select5.navigationOptions = ({ navigation }) => {
             <Entypo name="home" size={30} />
           </TouchableOpacity>
         ),
+        headerRight: () => (
+            <TouchableOpacity onPress={() => navigation.navigate("Compras")}>
+              <AntDesign name="table" size={30} />
+            </TouchableOpacity>
+          ),
       };
 };
 

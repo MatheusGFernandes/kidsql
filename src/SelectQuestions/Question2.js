@@ -2,7 +2,7 @@ export const dragList = [
 
     {
         "id": 1,
-        "name": "*",
+        "name": "Produto",
         "background_color": '#000',
         "answer": true,
         "inReceiveList": false,

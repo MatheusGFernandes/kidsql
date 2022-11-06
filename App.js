@@ -31,6 +31,13 @@ import Select4 from "./src/screens/Select/Select4";
 import Select5 from "./src/screens/Select/Select5";
 import Select6 from "./src/screens/Select/Select6";
 import Select7 from "./src/screens/Select/Select7";
+import Select8 from "./src/screens/Select/Select8";
+import Select9 from "./src/screens/Select/Select9";
+import Select10 from "./src/screens/Select/Select10";
+import Select11 from "./src/screens/Select/Select11";
+import Select12 from "./src/screens/Select/Select12";
+import Select13 from "./src/screens/Select/Select13";
+import Compras from "./src/components/TableCompras";
 
 const navigator = createStackNavigator(
   {
@@ -64,6 +71,13 @@ const navigator = createStackNavigator(
     Select5,
     Select6,
     Select7,
+    Select8,
+    Select9,
+    Select10,
+    Select11,
+    Select12,
+    Select13, 
+    Compras
   },
   {
     initialRouteName: "Welcome", //initialRouteName Mostra esse elemento primeiro

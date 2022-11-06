@@ -1,7 +1,6 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import { View, ViewEnd, Text, TextRed, TextBlue, TextPurple } from "../../styles/main";
 import Navigation from "../../components/Navigation";
-import { Context } from "../../context/AppContext";
 
 import { Compras } from "../../components/Tables/TablesSelect";
 

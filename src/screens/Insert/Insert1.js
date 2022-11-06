@@ -1,11 +1,8 @@
-import React, { useState, useContext } from "react";
-import { Text, TextRed, TextPurple, ViewEnd, ViewImage, View, Image } from "../../styles/main";
+import React from "react";
+import { Text, TextRed, ViewEnd, View, Image } from "../../styles/main";
 import Navigation from "../../components/Navigation";
-import { Context } from "../../context/AppContext";
 
 const Insert1 = ({ navigation }) => {
-
-    const { font } = useContext(Context);
 
     return (
         <View>

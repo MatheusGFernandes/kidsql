@@ -1,37 +1,34 @@
 import React, { useState } from "react";
-import { View, ViewEnd, Text, TouchableOpacity } from "../../styles/main";
+import { ScrollView, View, ViewEnd, Text, TouchableOpacity } from "../../styles/main";
 import Navigation from "../../components/Navigation";
 import { Entypo, AntDesign } from "@expo/vector-icons";
 
 import DragAndDrop from "../../components/DragAndDrop";
-import { receiveList, dragList } from "../../SelectQuestions/Question1";
+import { receiveList, dragList } from "../../SelectQuestions/Question5";
 
-const Select8 = ({ navigation }) => {
+const Select12 = ({ navigation }) => {
 
   const [correctAnswer, setCorrectAnswer] = useState(false);
   const [allAnswer, setAllAnswer] = useState(false);
 
-  console.log(correctAnswer);
-
   return (
-      <View>
-        <Text>1 - Fazer um Select para pegar todas as informações (*) da tabela compras:</Text>
-        <Text style={{ marginBottom: 30, fontSize: 10 }}>(Clique e arraste os blocos abaixo da linha para os blocos vazios em cima da linha)</Text>
+      <ScrollView>
+        <Text style={{ marginBottom: 30 }}>5 - Listar o nome e preço dos produtos que sejam em “KG” e quantidade maior que 3:</Text>
         <DragAndDrop receiveList={receiveList} dragList={dragList} onChange={(allAnswer) => setAllAnswer(allAnswer)} onResponse={(correct) => setCorrectAnswer(correct)}/>
         <ViewEnd>
             <Navigation 
                 disabled={!allAnswer}
-                reply  ={() => navigation.navigate("Select7")}
+                reply  ={() => navigation.navigate("Select11")}
                 forward={() =>   
-                  correctAnswer ? navigation.navigate("Select9") : null
+                  correctAnswer ? navigation.navigate("Select13") : null
                 } 
             />
         </ViewEnd>
-      </View>
+      </ScrollView>
   )
 };
 
-Select8.navigationOptions = ({ navigation }) => {
+Select12.navigationOptions = ({ navigation }) => {
     return {
         headerLeft: () => (
           <TouchableOpacity onPress={() => navigation.navigate("Home")}>
@@ -39,11 +36,11 @@ Select8.navigationOptions = ({ navigation }) => {
           </TouchableOpacity>
         ),
         headerRight: () => (
-          <TouchableOpacity onPress={() => navigation.navigate("Compras", {question: 1})}>
-            <AntDesign name="table" size={30} />
-          </TouchableOpacity>
-        ),
+            <TouchableOpacity onPress={() => navigation.navigate("Compras", {question: 5})}>
+              <AntDesign name="table" size={30} />
+            </TouchableOpacity>
+          ),
       };
 };
 
-export default Select8;
+export default Select12;

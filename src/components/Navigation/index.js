@@ -1,28 +1,31 @@
-import React, { useContext } from 'react';
-import { ViewNavigation, ButtonNavigation, TextNavigation } from './style';
+import React from 'react';
+import { ViewNavigation, ButtonReply, ButtonForward, TextNavigation } from './style';
 import { Entypo } from '@expo/vector-icons';
-import { Context } from "../../context/AppContext";
 
+const Navigation = ({ reply, forward, disabled }) => {
 
-const Navigation = ({ reply, forward }) => {
-
-    const { font } = useContext(Context);
     return (
         <ViewNavigation>
-            <ButtonNavigation 
+            <ButtonReply 
                 activeOpacity={0.8} 
                 onPress={() => reply()}
             >
                 <TextNavigation><Entypo name="reply" size={16} color="white"/>    Voltar</TextNavigation>
-            </ButtonNavigation>
-            <ButtonNavigation 
+            </ButtonReply>
+            <ButtonForward 
+                disabled={disabled}
                 activeOpacity={0.8} 
                 onPress={() => forward()}
             >
                 <TextNavigation>Próximo    <Entypo name="forward" size={16} color="white"/></TextNavigation>
-            </ButtonNavigation>
+            </ButtonForward>
         </ViewNavigation>
     )
+};
+
+Navigation.defaultProps = {
+
+    disable: false
 };
 
 export default Navigation;

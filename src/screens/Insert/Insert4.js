@@ -1,7 +1,6 @@
-import React, { useState, useContext } from "react";
-import { View, ViewEnd, ScrollView, Text, TextBlue, TextGreen, TouchableOpacity } from "../../styles/main";
+import React, { useState } from "react";
+import { View, ViewEnd, Text, TextBlue, TextGreen, TouchableOpacity } from "../../styles/main";
 import Navigation from "../../components/Navigation";
-import { Context } from "../../context/AppContext";
 import { Entypo } from "@expo/vector-icons";
 
 import CheckBox from "../../components/CheckBox";
@@ -27,6 +26,7 @@ const Insert4 = ({ navigation }) => {
             <CheckBox verify={6} options={alternatives} onChange={(alternative) => setAnswer(alternative[0])}/>
             <ViewEnd>
                 <Navigation 
+                    disabled={answer === undefined ? true : false}
                     reply  ={() => navigation.navigate("Insert3")} 
                     forward={
                         answer === 4  ? 

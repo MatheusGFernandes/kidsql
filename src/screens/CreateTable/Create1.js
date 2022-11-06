@@ -1,11 +1,8 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import { Text, TextBlue, TextPurple, ViewEnd, ScrollView, Image } from "../../styles/main";
 import Navigation from "../../components/Navigation";
-import { Context } from "../../context/AppContext";
 
 const Create1 = ({ navigation }) => {
-
-    const { font } = useContext(Context);
 
     return (
         <ScrollView>

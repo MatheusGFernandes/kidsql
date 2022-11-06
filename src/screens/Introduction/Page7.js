@@ -1,12 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Text, TextRed, TextBlue, ScrollView, ViewEnd, ViewImage, Image, TouchableOpacity } from "../../styles/main";
 import Navigation from "../../components/Navigation";
-import { Context } from "../../context/AppContext";
 import { Entypo } from "@expo/vector-icons";
 
 const Page7 = ({ navigation }) => {
-
-    const { font } = useContext(Context);
 
     return (
         <ScrollView>

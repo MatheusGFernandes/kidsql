@@ -3,10 +3,12 @@ import { StyleSheet, Dimensions } from "react-native";
 const styles = StyleSheet.create({
 
     container: {
-        flex: 1,
+        // flex: 1,
         padding: 12,
-        paddingTop: 40,
+        // paddingTop: 40,
+        marginTop: -10,
         justifyContent: "space-evenly",
+        // backgroundColor: "red",
     },
 
     centeredContent: {
@@ -15,19 +17,14 @@ const styles = StyleSheet.create({
 
     receivingZone: {
         height: (Dimensions.get("window").width / 6) - 12,
-        borderRadius: 10,
         width: (Dimensions.get("window").width / 4) - 12,
+        borderRadius: 10,
         justifyContent: "center",
         alignItems: "center",
         marginRight: 5
     },
 
     receiving: {
-        borderColor: "#00b34c",
-        borderWidth: 2,
-    },
-
-    receiving2: {
         backgroundColor: "#00b34c",
         borderColor: "#00b34c",
         height: (Dimensions.get("window").width / 6) - 12,
@@ -63,10 +60,11 @@ const styles = StyleSheet.create({
 
     receivingContainer: {
         flexDirection: "row",
-        justifyContent: "space-evenly",
+        // justifyContent: "space-evenly",
         borderBottomWidth: 1,
         paddingBottom: 15,
-        borderColor: '#000'
+        borderColor: '#000',
+        flexWrap: "wrap",
     },
 
     itemSeparator: {
@@ -74,31 +72,28 @@ const styles = StyleSheet.create({
     },
 
     draxListContainer: {
-        marginTop: 50,
+        marginTop: 25,
         padding: 5,
         height: 300
     },
 
     receivingZoneContainer: {
         padding: 5,
-        height: 100
+        height: 600,
+        flexDirection: "rows",
+        flexWrap: "wrap",
     },
 
     textStyle: {
-        fontSize: 18,
+        fontSize: 12,
         color: "#FFF",
-    },
-
-    headerStyle: {
-        marginTop: 20,
-        fontSize: 18,
-        fontWeight: "bold",
-        marginLeft: 20
+        fontFamily: "Poppins_500Medium",
     },
 
     gestureRootViewStyle: {
         backgroundColor: "#fffcf7",
-        flex: 1
+        flex: 1,
+        backgroundColor: 'red',
     },
 
     receiveStyle: {

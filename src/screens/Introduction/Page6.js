@@ -1,28 +1,22 @@
-import React, { useEffect, useContext } from "react";
-import { Text, TextRed, View, ViewEnd, ViewImage, Image, TouchableOpacity } from "../../styles/main";
+import React, { useEffect } from "react";
+import { Text, TextRed, View, ViewEnd, Image, TouchableOpacity } from "../../styles/main";
 import Navigation from "../../components/Navigation";
-import { Context } from "../../context/AppContext";
 import { Entypo } from "@expo/vector-icons";
-
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Page6 = ({ navigation }) => {
 
-    const { font } = useContext(Context);
+    // useEffect(() => {
+    //     navigation.addListener("didFocus", () => { // Todas vez que essa tela estiver em foco (ou seja, for chamada) recarrega os blogs existentes
+    //         fetchQuestions();
+    //     });
 
-    useEffect(() => {
-        navigation.addListener("didFocus", () => { // Todas vez que essa tela estiver em foco (ou seja, for chamada) recarrega os blogs existentes
-            fetchQuestions();
-        });
+    // }, []);
 
-    }, []);
+    // async function fetchQuestions () {
+    //     const response = await AsyncStorage.getItem("@Questions:KIDSQL");
+    //     const data = response ? JSON.parse(response) : [];
 
-    async function fetchQuestions () {
-        const response = await AsyncStorage.getItem("@Questions:KIDSQL");
-        const data = response ? JSON.parse(response) : [];
-        console.log(data);
-
-    }
+    // }
 
     return (
         <View>

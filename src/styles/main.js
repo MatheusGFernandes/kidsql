@@ -26,7 +26,7 @@ export const Modulo = styled.TouchableOpacity.attrs({
     activeOpacity: 0.7
 })`
 
-    background-color: ${({disabled}) => disabled ? "#E9E9E9" : "#0074b4"};
+    background-color: ${({disabled}) => disabled ? "#BFBFBF" : "#0074b4"};
     border-radius: 5px;
     padding: 10px 12px;
     width: 95%;
