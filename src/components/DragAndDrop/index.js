@@ -171,8 +171,6 @@ const DragAndDrop = ({ receiveList, dragList, onChange, onResponse }) => {
               setAllAnswer(false);
             };
 
-            console.log(newReceivingItemList);
-
           } else {
 
               let oldReceivingItemList = [...receivingItemList];

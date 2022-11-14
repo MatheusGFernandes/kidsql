@@ -11,8 +11,6 @@ const Select8 = ({ navigation }) => {
   const [correctAnswer, setCorrectAnswer] = useState(false);
   const [allAnswer, setAllAnswer] = useState(false);
 
-  console.log(correctAnswer);
-
   return (
       <View>
         <Text>1 - Fazer um Select para pegar todas as informações (*) da tabela compras:</Text>
