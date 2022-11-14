@@ -1,10 +1,7 @@
-import React, { useEffect, useContext } from 'react';
+import React from 'react';
 import { View, Title, SubTitle, ViewMainButton, MainButton, TextMainButton, Logo } from '../styles/main';
-import { Context } from "../context/AppContext";
 
 const HomeScreen = ({ navigation }) => {
-
-    const { name, font } = useContext(Context);
 
     return (
         <View>

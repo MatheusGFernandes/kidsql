@@ -14,7 +14,7 @@ const Select6 = ({ navigation }) => {
         <View>
             <Text><TextGreen>PARABÉNS!</TextGreen> Podemos também aplicar mais de um filtro utilizando o comando <TextRed>"AND"</TextRed> que significa <TextRed>"E"</TextRed> em português, logo após o primeiro filtro utilizando o comando <TextRed>"WHERE"</TextRed>:</Text>
             <Text>"SELECT PRODUTO, PRECO FROM COMPRAS WHERE PRECO {menor} 6 <TextRed>AND</TextRed> QUANTIDADE {maior} 3"</Text>
-            <Text>(SELECIONE PRODUTO E PRECO DA TABELA DE COMPRAS ONDE PREÇO SEJA MENOR QUE 10 E A QUANTIDADE MAIOR QUE 10)</Text>  
+            <Text>(SELECIONE PRODUTO E PREÇO DA TABELA DE COMPRAS ONDE PREÇO SEJA MENOR QUE 6 E A QUANTIDADE MAIOR QUE 3)</Text>  
             <View style={{ justifyContent: "center" }}> 
                 <Compras4 />
             </View>

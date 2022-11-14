@@ -12,7 +12,7 @@ const Select4 = ({ navigation }) => {
     return (
         <ScrollView>
             <Text>Nós também podemos aplicar filtros em nossas consultas, ou seja, definir quais informações desejamos obter com base em restrições de preço por exemplo.
-            Se quisermos saber todo os produtos que tenham o preço maior ou igual a 5 reais, aplicaremos o filtro <TextRed>"WHERE PRECO {maior}= 6"</TextRed> no final do nosso comando:</Text>
+            Se quisermos saber todos os produtos que tenham o preço maior ou igual a 5 reais, aplicaremos o filtro <TextRed>"WHERE PRECO {maior}= 6"</TextRed> no final do nosso comando:</Text>
             <Text>"SELECT PRODUTO, PRECO FROM COMPRAS <TextRed>WHERE</TextRed> PRECO {maior}= 6".</Text>  
             <View style={{ justifyContent: "center" }}> 
                 <Compras3 />

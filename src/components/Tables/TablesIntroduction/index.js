@@ -29,7 +29,7 @@ export class Produtos extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tableHead: ['PRODUTO', 'QUANTIDADE', 'UNIDADE', 'PRECO'],
+      tableHead: ['PRODUTO', 'QUANTIDADE', 'UNIDADE', 'PREÇO'],
       tableData: [
         ['Banana',       10, 'KG', 5],
         ['Bolacha',      20, 'UN', 3],
@@ -53,7 +53,7 @@ export class ProdutosPK extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tableHead: ['CODIGO', 'PRODUTO', 'QUANTIDADE', 'UNIDADE', 'PRECO'],
+      tableHead: ['CODIGO', 'PRODUTO', 'QUANTIDADE', 'UNIDADE', 'PREÇO'],
       tableData: [
         [3, 'Banana',       10, 'KG', 5],
         [4, 'Bolacha',      20, 'UN', 3],

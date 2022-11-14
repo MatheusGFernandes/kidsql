@@ -9,7 +9,7 @@ const Select7 = ({ navigation }) => {
         <View>
             <Text>Agora vamos praticar esses comandos arrastando os blocos disponíveis!</Text>
             <Text><TextPurple>Nala</TextPurple> irá ajudar sua mãe <TextPurple>Fátima</TextPurple> a fazer compras no <TextBlue>Supermercado</TextBlue></Text>
-            <Image source={require("../../assets/Supermercado.png")} style={{width: 300, height: 350}}/>
+            <Image source={require("../../assets/Supermercado.png")} style={{width: 350, height: 370}}/>
             <ViewEnd>
                 <Navigation 
                     reply  ={() => navigation.navigate("Select6")} 

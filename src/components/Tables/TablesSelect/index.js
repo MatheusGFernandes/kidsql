@@ -98,7 +98,7 @@ export class ComprasQ2 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tableHead: ["Produto"],
+      tableHead: ["PRODUTO"],
       tableData: [
         ["Leite"],
         ["Suco"],
@@ -123,7 +123,7 @@ export class ComprasQ3 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tableHead: ["Produto"],
+      tableHead: ["PRODUTO"],
       tableData: [
         ["Leite"],
         ["Suco"],
@@ -144,7 +144,7 @@ export class ComprasQ4 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tableHead: ["Preço", "Produto"],
+      tableHead: ["PREÇO", "PRODUTO"],
       tableData: [
         [8, "Suco"],
         [7, "Chocolate"],
@@ -165,7 +165,7 @@ export class ComprasQ5 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tableHead: ["Produto", "Preço"],
+      tableHead: ["PRODUTO", "PREÇO"],
       tableData: [
         ["Arroz", 5],
       ],

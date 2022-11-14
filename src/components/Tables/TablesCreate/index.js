@@ -42,7 +42,7 @@ export class ProdutosColuna extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tableHead: ['CÓDIGO', 'PRODUTO', 'PRECO', 'UNIDADE'],
+      tableHead: ['CÓDIGO', 'PRODUTO', 'PREÇO', 'UNIDADE'],
       tableData: [
         [1, 'Macarrão',     10, 'KG'],
         [2, 'Iogurte',      3, 'UN'],

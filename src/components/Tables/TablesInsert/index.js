@@ -5,7 +5,7 @@ export class InsertTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tableHead: ["CODIGO", "PRODUTO", "QUANTIDADE", "PRECO", "UNIDADE"],
+      tableHead: ["CODIGO", "PRODUTO", "QUANTIDADE", "PREÇO", "UNIDADE"],
       tableData: [
         [1,  "Leite", 4, 5, "L"],
       ],

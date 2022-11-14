@@ -7,10 +7,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import _isEmpty from 'lodash/isEmpty';
 
 const STEPS = [
-    {moduleName: "Introdução", screen: "Page1", progressName: "introductionModule", id: 1},
-    {moduleName: "Create", screen: "Create1", progressName: "createModule", id: 2},
-    {moduleName: "Insert", screen: "Insert1", progressName: "insertModule", id: 3},
-    {moduleName: "Select", screen: "Select1", progressName: "selectModule", id: 4}
+    {moduleName: "INTRODUÇÃO", screen: "Page1", progressName: "introductionModule", id: 1},
+    {moduleName: "CREATE TABLE", screen: "Create1", progressName: "createModule", id: 2},
+    {moduleName: "INSERT", screen: "Insert1", progressName: "insertModule", id: 3},
+    {moduleName: "SELECT", screen: "Select1", progressName: "selectModule", id: 4}
 ];
 
 const HomeScreen = ({ navigation }) => {

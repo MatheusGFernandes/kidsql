@@ -43,13 +43,8 @@ export const Context = createContext ({})
             return <Loading />
         };
 
-        // const font = [ 
-        //     {fontFamily: "Poppins_500Medium"},
-        //     {fontFamily: "Poppins_300Light"},
-        // ];
-
         return(
-            <Context.Provider value={{font: "teste", progress, setProgress}}>
+            <Context.Provider value={{ progress, setProgress}}>
                 {children}
             </Context.Provider>
         )

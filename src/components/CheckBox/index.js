@@ -61,8 +61,8 @@ const CheckBox = ({ verify, options, onChange }) => {
                     <Text>
                         <TouchableOpacity onPress={() => pick(alternative.id)}>
                             { selected.findIndex(i => i === alternative.id) !== -1 ? 
-                                <Ionicons name="checkbox" size={22} color='#5b1d99'/> :
-                                <MaterialCommunityIcons name="checkbox-blank-outline" size={22} color='#5b1d99'/>}
+                                <Ionicons name="checkbox" size={24} color='#5b1d99'/> :
+                                <MaterialCommunityIcons name="checkbox-blank-outline" size={24} color='#5b1d99'/>}
                         </TouchableOpacity> {alternative.text}</Text>
                 </ViewOptions>
             ))}

@@ -134,9 +134,10 @@ const DragAndDrop = ({ receiveList, dragList, onChange, onResponse }) => {
           const eventInReceivingList = payload[0].inReceiveList;
           const eventAnswer = payload[0].answer;
           const itemInReceivingList = item.inReceiveList;
+          const itemAnswer = item.answer;
           const selected_item = payload[0]
           
-          if (eventInReceivingList === true && eventAnswer === true && itemInReceivingList === true) {
+          if (eventInReceivingList && eventAnswer && itemInReceivingList) {
 
             let oldReceivingItemList = [...receivingItemList];
             let newReceivingItemList = [...receivingItemList];
@@ -145,6 +146,14 @@ const DragAndDrop = ({ receiveList, dragList, onChange, onResponse }) => {
 
             if (selected_item.id === index) {
               newReceivingItemList[index].correct = true
+            } else {
+              newReceivingItemList[index].correct = false
+            };
+
+            if (itemAnswer && newReceivingItemList[payload[1]].id === payload[1]) {
+              newReceivingItemList[payload[1]].correct = true
+            } else if (itemAnswer && newReceivingItemList[payload[1]].id !== payload[1]) {
+              newReceivingItemList[payload[1]].correct = false
             };
 
             setReceivedItemList(newReceivingItemList);
@@ -152,42 +161,51 @@ const DragAndDrop = ({ receiveList, dragList, onChange, onResponse }) => {
             // console.log(receiveList.length);
             if (newReceivingItemList.filter((item) => item.correct === true).length === receiveList.length) {
               setCorrectOrder(true);
-            }
+            } else {
+              setCorrectOrder(false);
+            };
+
             if (newReceivingItemList.filter((item) => item.answer === true).length === receiveList.length) {
               setAllAnswer(true);
             } else {
               setAllAnswer(false);
-            }
+            };
+
+            console.log(newReceivingItemList);
 
           } else {
 
-            let oldReceivingItemList = [...receivingItemList];
-            let newReceivingItemList = [...receivingItemList];
-            newReceivingItemList[index] = selected_item;
-            newReceivingItemList[index].inReceiveList = true;
+              let oldReceivingItemList = [...receivingItemList];
+              let newReceivingItemList = [...receivingItemList];
+              newReceivingItemList[index] = selected_item;
+              newReceivingItemList[index].inReceiveList = true;
 
-            if (selected_item.answer && selected_item.id === index) {
-              newReceivingItemList[index].correct = true
-            };
+              if (selected_item.answer && selected_item.id === index) {
+                newReceivingItemList[index].correct = true
+              } else {
+                newReceivingItemList[index].correct = false
+              };
 
-            setReceivedItemList(newReceivingItemList);
-            // console.log(newReceivingItemList.filter((item) => item.correct === true).length);
-            // console.log(receiveList.length);
-            if (newReceivingItemList.filter((item) => item.correct === true).length === receiveList.length) {
-              setCorrectOrder(true);
-            } 
+              setReceivedItemList(newReceivingItemList);
+              // console.log(newReceivingItemList.filter((item) => item.correct === true).length);
+              // console.log(receiveList.length);
+              if (newReceivingItemList.filter((item) => item.correct === true).length === receiveList.length) {
+                setCorrectOrder(true);
+              } else {
+                setCorrectOrder(false);
+              };
 
-            if (newReceivingItemList.filter((item) => item.answer === true).length === receiveList.length) {
-              setAllAnswer(true);
-            } else {
-              setAllAnswer(false);
-            }
+              if (newReceivingItemList.filter((item) => item.answer === true).length === receiveList.length) {
+                setAllAnswer(true);
+              } else {
+                setAllAnswer(false);
+              };
 
-            let newDragItemMiddleList = [...dragItemMiddleList];
-            newDragItemMiddleList[payload[1]] = oldReceivingItemList[index];
-            newDragItemMiddleList[payload[1]].inReceiveList = false;
+              let newDragItemMiddleList = [...dragItemMiddleList];
+              newDragItemMiddleList[payload[1]] = oldReceivingItemList[index];
+              newDragItemMiddleList[payload[1]].inReceiveList = false;
 
-            setDragItemListMiddle(newDragItemMiddleList);
+              setDragItemListMiddle(newDragItemMiddleList);
           }}
         }
         renderHoverContent={({ viewState }) => {
